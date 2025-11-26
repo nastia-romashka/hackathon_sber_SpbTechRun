@@ -1,9 +1,68 @@
 <!DOCTYPE html>
-<html>
-    <head>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register</title>
+    <link rel="stylesheet" href="/resources/static/css/regist.css"/>
+</head>
+<body>
+    <div class="registration-container">
+        <!-- Левая часть (контент) -->
+        <div class="registration-left">
+            <!-- Шаг 1: Логин и пароль -->
+            <div class="step-content step-1 active">
+                <form class="regist-form" id="step1Form">
+                    <h2>Create Account</h2>
+                    <input class="login" type="text" name="username" placeholder="Login" required>
+                    <input class="password" name="password" placeholder="Password" required>
+                    <button class="submit-button" type="button" id="nextStepBtn">Next step</button>
+                </form>
+            </div>
 
-    </head>
-    <body>
-        
-    </body>
+            <!-- Шаг 2: Визуал (картинка с подписью) -->
+            <div class="step-content step-2-visual-content">
+                <div class="visual-content">
+                    <div class="visual-image">
+                        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="100" r="60" fill="rgba(45,212,191,0.1)"/>
+                            <path d="M70 100 L90 120 L130 70" stroke="rgba(45,212,191,0.8)" stroke-width="4" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <p class="visual-text">Almost done!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая часть (визуал/форма) -->
+        <div class="registration-right">
+            <!-- Шаг 1: Фон и картинка -->
+            <div class="step-visual step-1-visual active">
+                <div class="visual-content">
+                    <div class="visual-image">
+                        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="80" r="40" fill="rgba(45,212,191,0.3)"/>
+                            <path d="M60 150 Q100 180 140 150" stroke="rgba(45,212,191,0.3)" stroke-width="3" fill="none"/>
+                            <rect x="70" y="120" width="60" height="8" fill="rgba(45,212,191,0.2)"/>
+                        </svg>
+                    </div>
+                    <p class="visual-text">Join our community</p>
+                </div>
+            </div>
+
+            <!-- Шаг 2: Дополнительные данные -->
+            <div class="step-visual step-2-form-content">
+                <form class="regist-form" id="step2Form">
+                    <h2>Complete Profile</h2>
+                    <input class="city" type="text" name="city" placeholder="City" required>
+                    <input class="district" type="text" name="district" placeholder="District" required>
+                    <input class="age" type="text" name="age" placeholder="Age">
+                    <button class="submit-button" type="submit">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/resources/static/js/regist.js"></script>
+</body>
 </html>
