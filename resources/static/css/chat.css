@@ -1,0 +1,316 @@
+:root{
+    --bg: #071024;
+    --panel: #0f1724;
+    --muted: #c2cbe0; /* brighter for readability */
+    --accent: #1010a3;
+    --msg-user: #10a37f;
+    --msg-user-text: #ffffff; /* high contrast on accent */
+    --msg-assist: #0f1724;
+    --glass: rgba(255, 255, 255, 0.200);
+    --radius: 10px;
+    --gap: 12px;
+    --font-size: 20px;
+    --line-height: 1.6;
+}
+
+*{
+    box-sizing:border-box
+}
+
+html,body{
+    height:100%
+}
+
+body{
+    margin:0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+    background-color: rgb(26, 29, 34);
+    background-position: 50% 0%;
+    color: #e6eef8;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+}
+
+/* Layout */
+.app{
+    display:flex;
+    height:100vh;
+    gap:20px;
+    padding:20px;
+}
+
+.sidebar{
+    width:300px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0.15));
+    border-radius:var(--radius);
+    padding:16px;
+    display:flex;
+    flex-direction:column;
+    gap:var(--gap);
+    min-width:220px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:700;
+}
+
+/* Картинка рядом с названием в сайдбаре */
+.brand-img{
+    width:40px;
+    height:40px;
+    border-radius:8px;
+    object-fit:cover;
+    display:inline-block;
+}
+
+/* Центрируем основные блоки чата и ограничиваем ширину для удобства чтения */
+.chat-header, .messages, .input-area{
+    max-width: 900px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.new-chat{
+    background:var(--glass);
+    border:1px solid rgba(255, 255, 255, 0.200);
+    padding:10px;
+    border-radius:8px;
+    cursor:pointer;
+    color:var(--muted);
+    display:flex;
+    gap:8px;
+    align-items:center;
+    font-weight:600;
+}
+
+.new-chat:hover{
+    border:1px solid rgb(16, 163, 126);
+    color:#fff
+}
+
+.history{
+    overflow:auto;
+    padding-right:8px;
+    margin-top:6px;
+    display:flex;
+    flex-direction:column;
+    gap:8px
+}
+
+.history button{
+    background:transparent;
+    border:none;color:var(--muted);
+    text-align:left;
+    padding:10px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:background .12s, color .12s;
+}
+
+.history button:hover{
+    background:rgba(255,255,255,0.06);color:#fff
+}
+
+/* Main chat */
+.main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    border-radius:12px;
+    overflow:hidden;
+    background:linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255,255,255,0.15));
+}
+
+.chat-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 20px;
+    border-bottom:1px solid rgb(255, 255, 255)
+}
+
+.title{
+    font-weight:700;
+    font-size:1.05rem
+}
+
+.model-select{
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.04);
+    padding:8px;
+    border-radius:8px;
+    color:var(--muted)
+}
+
+/* Messages */
+.messages{
+    flex:1;
+    overflow:auto;
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    scrollbar-width:thin;
+    -webkit-overflow-scrolling:touch;
+}
+
+.msg{
+    max-width:78%;
+    padding:16px 18px;
+    border-radius:12px;
+    line-height:1.6;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.01) inset;
+    word-wrap:break-word;
+    white-space:pre-wrap;
+    font-size: 1.08rem; /* slightly larger messages for readability */
+}
+
+/* Assistant / user bubbles */
+.msg.assistant{
+    align-self:flex-start;
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    border:1px solid rgba(255,255,255,0.08);
+    color: #e8f0ff;
+}
+
+.msg.user{
+    align-self:flex-end;
+    background: var(--msg-user);
+    color: var(--msg-user-text);
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+/* Emphasize code blocks inside messages */
+.msg pre, .msg code {
+    background: rgba(0,0,0,0.35);
+    padding:8px;
+    border-radius:8px;
+    overflow:auto;
+    font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+    font-size: .9rem;
+}
+
+/* Input area */
+.input-area{
+    padding:16px;
+    border-top:1px solid rgb(255, 255, 255);
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+}
+
+textarea{
+    flex:1;
+    min-height:56px;
+    max-height:100px;
+    padding:12px;
+    border-radius:20px;
+    background:transparent;
+    border:1px solid rgb(0, 140, 255);
+    color:inherit;
+    resize:none;
+    font-size:1rem;
+    line-height:1.5;
+    margin-right:8px;
+}
+
+textarea::placeholder{
+    color:rgba(255, 255, 255, 0.882);
+}
+
+textarea:focus{
+    outline:none;
+    box-shadow:0 0 0 5px rgba(0, 255, 191, 0.08);
+    border-color: rgb(0, 255, 191);
+}
+
+.file-btn, .voice-btn, .send-btn{
+    /* Круглые кнопки одинакового размера */
+    width:44px;
+    height:44px;
+    padding:0;
+    border-radius:50%;
+    background:transparent;
+    border:1px solid rgb(0, 140, 255);
+    color:var(--muted);
+    cursor:pointer;
+    font-weight:700;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+}
+
+.file-btn:hover, .voice-btn:hover, .send-btn:hover{
+    background:rgb(0, 140, 255);
+    border-color: rgb(0, 140, 255);
+    color:#10a37f;
+}
+
+/* Кнопка удаления диалога в заголовке */
+.header-actions{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+.delete-btn{
+    width:40px;
+    height:40px;
+    padding:0;
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+    border:1px solid rgb(255, 0, 0);
+    color:var(--muted);
+    cursor:pointer;
+    font-size:18px;
+}
+.delete-btn:hover{
+    background:rgba(255, 0, 0);
+    border-color: rgba(255,80,80,0.25);
+    color:#ff6b6b;
+}
+
+.send-btn{
+    background:var(--accent);
+    color:var(--msg-user-text);
+    border:none;
+}
+
+.voice-btn.recording{
+    background: rgb(0, 255, 191);
+    border-color: rgb(0, 255, 191);
+    color: #10a37f;
+}
+
+.send-btn[disabled]{
+    opacity:.6;
+    cursor:default;
+}
+
+/* Small screens: stack, make sidebar collapsible */
+@media (max-width:900px){
+    .app{padding:12px}
+    .sidebar{display:none}
+    .messages{padding:16px}
+    .msg{max-width:100%}
+}
+
+/* Simple scrollbar */
+.messages::-webkit-scrollbar, .history::-webkit-scrollbar{
+    width:10px;height:10px
+}
+
+.messages::-webkit-scrollbar-thumb, .history::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.08);
+    border-radius:8px;
+}

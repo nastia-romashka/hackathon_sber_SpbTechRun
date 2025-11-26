@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Chat</title>
+    <link rel="stylesheet" href="/resources/static/css/chat.css"/>
+</head>
+<body>
+    <div class="app" role="application" aria-label="Chat">
+        <aside class="sidebar" aria-label="Sidebar of chat">
+            <div class="brand">
+                <img src="/resources/static/images/logo.jpg" alt="logo" class="brand-img"/>
+                <div>Chat</div>
+            </div>
+            <button class="new-chat" id="newChat">+ New Chat</button>
+            <div class="history" id="history" aria-live="polite"></div>
+        </aside>
+
+        <main class="main" role="main">
+            <div class="chat-header">
+                <div>
+                    <div class="title" id="convTitle">New Chat</div>
+                </div>
+                <!-- Действия в шапке чата: удалить диалог -->
+                <div class="header-actions">
+                    <button id="deleteBtn" class="delete-btn" title="Delete conversation" aria-label="Delete conversation">🗑️</button>
+                </div>
+            </div>
+
+            <div class="messages" id="messages" role="log" aria-live="polite">
+                <div class="msg assistant" id="welcome">Hello! I am a local prototype. Ask me anything or write a task.</div>
+            </div>
+
+            <div class="input-area">
+                <textarea id="input" placeholder="Write a message... (Enter — send, Shift+Enter — new line)"></textarea>
+                <!-- Кнопка прикрепления файла (скрытый input) -->
+                <input type="file" id="fileInput" style="display:none" />
+                <button id="fileBtn" class="file-btn" title="Attach file" aria-label="Attach file">📎</button>
+                <!-- Кнопка голосового ввода (запись) -->
+                <button id="voiceBtn" class="voice-btn" title="Voice input" aria-label="Voice input">🎤</button>
+                <button id="send" class="send-btn" title="Send" aria-label="Send">✈️</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="/resources/static/js/chat.js"></script>
+</body>
+</html>
